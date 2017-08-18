@@ -1,0 +1,166 @@
+<header id="header-container">
+    <!-- Header -->
+    <div id="header">
+        <div class="container">
+            <!-- Left Side Content -->
+            <div class="left-side">
+                <!-- Logo -->
+                <div id="logo">
+                    <a href="index.html">
+                      <%= image_tag "logo.png" %>
+                    </a>
+                </div>
+                <!-- Mobile Navigation -->
+                <div class="menu-responsive">
+                    <i class="fa fa-reorder menu-trigger"></i>
+                </div>
+                <!-- Main Navigation -->
+                <nav id="navigation" class="style-1">
+                    <ul id="responsive">
+                        <li>
+                          <%= link_to "Home", root_path, class: "current" %>
+                        </li>
+                        <li>
+                          <a href="#">How It Works</a>
+                        </li>
+                        <li>
+                          <%= link_to "Contact", contact_path %>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="clearfix"></div>
+                <!-- Main Navigation / End -->
+            </div>
+            <!-- Left Side Content / End -->
+            <!-- Right Side Content / End -->
+            <div class="right-side">
+                <div class="header-widget">
+                    <a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim button border with-icon">Sign In &nbsp;<i class="sl sl-icon-login"></i></a>
+                    <a href="#sign-up-dialog" class="sign-up popup-with-zoom-anim button with-icon">Sign Up &nbsp;<i class="sl sl-icon-user"></i></a>
+                </div>
+            </div>
+            <!-- Right Side Content / End -->
+            <!-- Sign In Popup -->
+            <div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide popup-dialog">
+                <div class="small-dialog-header">
+                    <h3>Sign In</h3>
+                </div>
+                <!--Tabs -->
+                <div class="sign-in-form style-1">
+                    <form method="post" class="login">
+                        <p class="form-row form-row-wide">
+                            <label for="username">
+                              <i class="im im-icon-Male"></i>
+                              <input type="text" class="input-text" name="username" id="username" value="" placeholder="Username" />
+                            </label>
+                        </p>
+
+                        <p class="form-row form-row-wide">
+                            <label for="password">
+                              <i class="im im-icon-Lock-2"></i>
+                              <input class="input-text" type="password" name="login-password" id="login-password" placeholder="Password"/>
+                            </label>
+                            <span class="lost_password">
+                              <a href="#" >Lost Your Password?</a>
+                            </span>
+                        </p>
+
+                        <div class="form-row">
+                            <input type="submit" class="button border margin-top-5" name="login" value="Login" />
+                            <div class="checkboxes margin-top-10">
+                                <input id="remember-me" type="checkbox" name="check">
+                                <label for="remember-me">Remember Me</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="sign-up-dialog" class="zoom-anim-dialog mfp-hide popup-dialog">
+                <div class="small-dialog-header">
+                    <h3>Sign Up</h3>
+                </div>
+                <!--Tabs -->
+                <div class="sign-in-form">
+                    <form action="#" class="regform" method="get">
+                        <!-- Fieldsets -->
+                        <fieldset id="first" class="fieldset text-center">
+                            <div class=" margin-bottom-30">
+                                <label>I Am Looking For</label>
+                                <select data-placeholder="All Categories" name="category" class="chosen-select" id="select-form">
+                                    <option>- Select -</option>
+                                    <option>Employees</option>
+                                    <option >A Job</option>
+                                </select>
+                            </div>
+                            <button id="next_btn1" onclick="next_step1()" class="button margin-top-5" type="button">Next &nbsp;<i class="im im-icon-Arrow-Forward2"></i></button>
+                        </fieldset>
+
+                        <fieldset id="second" class="fieldset">
+                            <p class="form-row form-row-wide">
+                                <label for="fname">
+                                  <i class="im im-icon-Male"></i>
+                                  <input type="text" class="input-text" name="fname" placeholder="First Name" id="fname" value="" />
+                                </label>
+                            </p>
+
+                            <p class="form-row form-row-wide">
+                                <label for="lname">
+                                  <i class="im im-icon-Male"></i>
+                                  <input type="text" class="input-text" name="lname" placeholder="Last Name" id="lname" value="" />
+                                </label>
+                            </p>
+
+                            <span id="emp-form">
+                                <h4>Some Details About Your Pharmacy</h4>
+                                <p class="form-row form-row-wide">
+                                  <label for="ph-name">
+                                    <i class="im im-icon-Clinic"></i>
+                                    <input type="text" class="input-text" name="ph-name" placeholder="Pharmacy Name" id="ph-name" value="" />
+                                  </label>
+                                </p>
+                                <p class="form-row form-row-wide">
+                                  <label for="code">
+                                    <i class="im im-icon-Lock-User"></i>
+                                    <input type="text" class="input-text" name="code" placeholder="Code Name" id="code" value="" />
+                                  </label>
+                                  <p class="note">(Optional: Note that without a codename, your pharmacy name will be visible to job applicants!)</p>
+                                </p>
+                            </span>
+
+                            <button id="pre_btn1" onclick="prev_step1()" class="button border margin-top-5" type="button"><i class="im im-icon-Back2"></i>&nbsp; Back</button>
+                            <button id="next_btn2" onclick="next_step2()" class="button border with icon margin-top-5" type="button">Next &nbsp;<i class="im im-icon-Arrow-Forward2"></i></button>
+                        </fieldset>
+
+                        <fieldset id="third" class="fieldset">
+                            <p class="form-row form-row-wide">
+                                <label for="email">
+                                  <i class="im im-icon-Mail"></i>
+                                  <input type="text" class="input-text" name="email" placeholder="Email Address" id="email" value="" />
+                                </label>
+                            </p>
+
+                            <p class="form-row form-row-wide">
+                                <label for="choose-pass">
+                                  <i class="im im-icon-Lock-2"></i>
+                                  <input type="text" class="input-text" name="choose-pass" placeholder="Password" id="choose-pass" value="" />
+                                </label>
+                            </p>
+
+                            <p class="form-row form-row-wide">
+                                <label for="conf-pass">
+                                  <i class="im im-icon-Lock-2"></i>
+                                  <input type="text" class="input-text" name="conf-passe" placeholder="Confirm Password" id="conf-pass" value="" />
+                                </label>
+                            </p>
+
+                            <button id="pre_btn2" onclick="prev_step2()" class="button border margin-top-5" type="button"><i class="im im-icon-Back2"></i>&nbsp; Back</button>
+                            <button id="next_btn2" onclick="next_step2()" class="button with icon margin-top-5" name="submit" type="submit">Submit &nbsp;<i class="im im-icon-Thumb"></i></button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- Sign In Popup / End -->
+        </div>
+    </div>
+    <!-- Header / End -->
+</header>

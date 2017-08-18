@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <title>RPh Trader</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag    'rph.min.css' %>
+    <%= stylesheet_link_tag    'main.css' %>
+    <%= javascript_include_tag 'application' %>
+
+    <link rel="shortcut icon" href="/favicon.png">
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
