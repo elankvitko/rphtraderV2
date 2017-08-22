@@ -1,0 +1,27 @@
+<header id="header-container" class="fixed fullwidth dashboard">
+  <div id="header" class="not-sticky">
+    <div class="container">
+      <div class="left-side">
+        <div id="logo">
+          <%= link_to root_path do %>
+            <%= image_tag "logo.png" %>
+          <% end %>
+          <%= link_to root_path, class: "dashboard-logo" do %>
+            <%= image_tag "logo2.png" %>
+          <% end %>
+        </div>
+        <nav id="navigation" class="style-1 hidden-md hidden-sm explore-menu">
+          <ul id="responsive">
+            <li>
+              <%= link_to root_path do %>
+                <i class="im im-icon-Idea" style="font-size:35px;"></i>&nbsp; <span style="position:relative; top: -8px;">Explore</span>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+        <div class="clearfix"></div>
+      </div>
+      <%= render "top_right_menu" %>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,37 @@
+<!-- Sign In Popup -->
+<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide popup-dialog">
+  <div class="small-dialog-header">
+      <h3>Sign In</h3>
+  </div>
+  <!--Tabs -->
+  <div class="sign-in-form style-1">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => { class: "login" }) do |f| %>
+      <p class="form-row form-row-wide">
+        <label for="email">
+          <i class="im im-icon-Male"></i>
+          <%= f.email_field :email, autofocus: true, class: "input-text", id: "username", placeholder: "Email" %>
+        </label>
+      </p>
+
+      <p class="form-row form-row-wide">
+          <label for="password">
+            <i class="im im-icon-Lock-2"></i>
+            <%= f.password_field :password, autocomplete: "off", class: "input-text", id: "login-password", placeholder: "Password" %>
+          </label>
+          <span class="lost_password">
+            <a href="#" >Lost Your Password?</a>
+          </span>
+      </p>
+
+      <div class="form-row">
+          <%= f.submit "Log In", class: "button border margin-top-5", name: "login", value: "login" %>
+          <% if devise_mapping.rememberable? -%>
+            <div class="checkboxes margin-top-10">
+              <%= f.check_box :remember_me, id: "remember-me" %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+      </div>
+    <% end %>
+  </div>
+</div>

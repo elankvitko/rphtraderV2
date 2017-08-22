@@ -1,0 +1,15 @@
+<%= form_for current_user do |f| %>
+  <%= f.hidden_field :id %>
+  <label>First Name</label>
+  <%= f.text_field :first_name %>
+  <label>Last Name</label>
+  <%= f.text_field :last_name %>
+  <label>Email</label>
+  <%= f.text_field :email %>
+  <label>Position</label>
+  <%= f.select :role, options_for_select( [ "- Please Choose -", "Pharmacist", "Technician", "Intern", "Cashier" ], html_options = { 'class' => "chosen-select", :selected => current_user.role } ) %>
+  <div class="range-slider margin-top-20">
+    <input class="distance-radius" type="range" name="user[range]" min="1" max="50" step="1" value="<%= current_user.range %>" data-title="Select Your Range">
+  </div>
+  <%= f.submit "Save Changes", class: "button margin-top-15" %>
+<% end %>

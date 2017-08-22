@@ -1,0 +1,32 @@
+<div class="dashboard-nav">
+  <div class="dashboard-nav-inner">
+    <ul data-submenu-title="Main">
+      <li class="<%= active_class_for_dash( link_to availability_url ) %>">
+        <%= link_to( availability_path ) do %>
+          <i class="sl sl-icon-clock"></i>
+          Set Availibility
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_path( current_user ) do %>
+          <i class="sl sl-icon-envelope-open"></i>
+          Messages
+        <% end %>
+      </li>
+    </ul>
+    <ul data-submenu-title="Account">
+      <li class="<%= active_class_for_dash( link_to user_url( current_user ) ) %>">
+        <%= link_to user_path( current_user ) do %>
+          <i class="sl sl-icon-user"></i>
+          My Profile
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: "delete" do %>
+          <i class="sl sl-icon-power"></i>
+          Logout
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

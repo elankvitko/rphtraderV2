@@ -1,0 +1,51 @@
+// Place all the styles related to the availability controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.adjust-cal-head {
+  width: 40px;
+  height: 50px;
+  text-align: center;
+}
+
+
+.adjust-cal-date {
+  height: 35px;
+  text-align: center;
+}
+
+.calendar-links {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.all-dates {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  color: #707070;
+}
+
+.all-dates:hover {
+  background: #3575d3;
+  color: #ffffff;
+}
+
+.todays-date {
+  background: #3575d3;
+  color: #ffffff;
+}
+
+.not-available-date {
+  color: #707070;
+  background: #eeeeee;
+  pointer-events: none;
+  cursor: default;
+}
+
+.event-available {
+  background: #3575d3;
+  color: #ffffff;
+}

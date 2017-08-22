@@ -1,0 +1,5 @@
+<%= form_for current_user do |f| %>
+  <label class="margin-top-0">Enter Zip Code</label>
+  <%= f.text_field :zip %>
+  <%= f.submit "Update", class: "button margin-top-15" %>
+<% end %>

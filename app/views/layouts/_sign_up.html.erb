@@ -1,0 +1,87 @@
+<div id="sign-up-dialog" class="zoom-anim-dialog mfp-hide popup-dialog">
+  <div class="small-dialog-header">
+      <h3>Sign Up</h3>
+  </div>
+  <!--Tabs -->
+
+  <div class="sign-in-form">
+      <!-- <form action="#" class="regform" method="get"> -->
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { class: "regform" }) do |f| %>
+        <!-- Fieldsets -->
+        <fieldset id="first" class="fieldset text-center">
+            <div class=" margin-bottom-30">
+                <label>I Am Looking For</label>
+                <select class="chosen-select" data-placeholder="All Categories" id="select-form">
+                  <option value="- Select -">- Select -</option>
+                  <option value="Employees">Employees</option>
+                  <option value="A Job">A Job</option>
+                </select>
+            </div>
+            <button id="next_btn1" onclick="next_step1()" class="button margin-top-5" type="button">Next &nbsp;<i class="im im-icon-Arrow-Forward2"></i></button>
+        </fieldset>
+
+        <fieldset id="second" class="fieldset">
+            <p class="form-row form-row-wide">
+                <%= f.label :first_name do %>
+                  <i class="im im-icon-Male"></i>
+                  <%= f.text_field :first_name, autofocus: true, class: "input-text", id: "fname", placeholder: "First Name" %>
+                <% end %>
+            </p>
+
+            <p class="form-row form-row-wide">
+                <%= f.label :last_name do %>
+                  <i class="im im-icon-Male"></i>
+                  <%= f.text_field :last_name, autofocus: true, class: "input-text", id: "lname", placeholder: "Last Name" %>
+                <% end %>
+            </p>
+
+            <span id="emp-form">
+                <h4>Some Details About Your Pharmacy</h4>
+                <p class="form-row form-row-wide">
+                  <%= f.label :pharmacy_name do %>
+                    <i class="im im-icon-Clinic"></i>
+                    <%= f.text_field :pharmacy_name, class: "input-text", placeholder: "Pharmacy Name", id: "ph-name" %>
+                  <% end %>
+                </p>
+                <p class="form-row form-row-wide">
+                  <%= f.label :Codename do %>
+                    <i class="im im-icon-Lock-User"></i>
+                    <%= f.text_field :alias, class: "input-text", placeholder: "Code Name", id: "code" %>
+                  <% end %>
+                  <p class="note">(Optional: Note that without a codename, your pharmacy name will be visible to job applicants!)</p>
+                </p>
+            </span>
+            <button id="pre_btn1" onclick="prev_step1()" class="button border margin-top-5" type="button"><i class="im im-icon-Back2"></i>&nbsp; Back</button>
+            <button id="next_btn2" onclick="next_step2()" class="button border with icon margin-top-5" type="button">Next &nbsp;<i class="im im-icon-Arrow-Forward2"></i></button>
+        </fieldset>
+
+        <fieldset id="third" class="fieldset">
+            <p class="form-row form-row-wide">
+                <%= f.label :email do %>
+                  <i class="im im-icon-Mail"></i>
+                  <%= f.email_field :email, class: "input-text", placeholder: "Email Address", id: "email" %>
+                <% end %>
+            </p>
+
+            <p class="form-row form-row-wide">
+                <%= f.label :password do %>
+                  <i class="im im-icon-Lock-2"></i>
+                  <%= f.password_field :password, autocomplete: "off", class: "input-text", placeholder: "Password", id: "choose-pass" %>
+                <% end %>
+            </p>
+
+            <p class="form-row form-row-wide">
+                <%= f.label :password_confirmation do %>
+                  <i class="im im-icon-Lock-2"></i>
+                  <%= f.password_field :password_confirmation, autocomplete: "off", class: "input-text", id: "conf-pass", placeholder: "Confirm Password" %>
+                <% end %>
+            </p>
+
+            <button id="pre_btn2" onclick="prev_step2()" class="button border margin-top-5" type="button"><i class="im im-icon-Back2"></i>&nbsp; Back</button>
+            <%= f.button :submit, id: "next-btn2", class: "button with icon margin-top-5", html_options: { onclick: "next_step2()" } do %>
+              Submit &nbsp;<i class="im im-icon-Thumb"></i>
+            <% end %>
+        </fieldset>
+    <% end %>
+  </div>
+</div>

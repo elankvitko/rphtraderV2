@@ -1,0 +1,158 @@
+<link rel="stylesheet" href="/stylesheets/widgets.css">
+<div id="wrapper">
+	<header id="header-container" class="fixed fullwidth dashboard">
+		<div id="header" class="not-sticky">
+			<div class="container">
+				<div class="left-side">
+					<div id="logo">
+						<%= link_to root_path, class: "dashboard-logo" do %>
+							<%= image_tag "logo2.png" %>
+						<% end %>
+					</div>
+					<nav id="navigation" class="style-1 hidden-md hidden-sm explore-menu">
+						<ul id="responsive">
+							<li>
+								<%= link_to root_path, class: "current" do %>
+									<i class="im im-icon-Globe" style="font-size:35px;"></i>&nbsp; <span style="position:relative; top: -8px;">Back To Website</span>
+								<% end %>
+							</li>
+						</ul>
+					</nav>
+					<div class="clearfix"></div>
+				</div>
+				<%= render "users/top_right_menu" %>
+			</div>
+		</div>
+	</header>
+	<div class="clearfix"></div>
+	<div id="dashboard">
+		<a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+		<%= render "users/nav" %>
+		<div class="dashboard-content">
+			<div id="titlebar">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>My Availibility Status</h2>
+						<nav id="breadcrumbs">
+							<ul>
+								<li>
+									<%= link_to "Home", root_path %>
+								</li>
+								<li>
+									<%= link_to "Dashboard", user_path( current_user ) %>
+								</li>
+								<li>Set Availability</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="dashboard-list-box margin-top-0 padding-top-20">
+						<div class="col-xs-12">
+							<%= form_for current_user, :html => { :class => "employment-type" } do |f| %>
+								<label>Choose Employment Type</label>
+								<%= f.select :type_ep, options_for_select( [ "Full Time / Part Time", "Per Diem" ], html_options = { 'id' => "employment", 'class' => "chosen-select", :selected => current_user.type_ep, 'data-placeholder' => "- Please Choose -" } ) %>
+							<% end %>
+						</div>
+						<div class="view-box">
+							<div class="col-xs-12 margin-top-30" id="day-view">
+								<input id="toggle1" class="<%= check_inputs( "monday" ) %>" type="checkbox">
+								<label class="label day" for="toggle1">Monday <span class="status">Avaiable</span></label>
+								<input id="toggle2" class="<%= check_inputs( "tuesday" ) %>" type="checkbox">
+								<label class="label day" for="toggle2">Tuesday <span class="status">Avaiable</span></label>
+								<input id="toggle3" class="<%= check_inputs( "wednesday" ) %>" type="checkbox">
+								<label class="label day" for="toggle3">Wednesday <span class="status">Avaiable</span></label>
+								<input id="toggle4" class="<%= check_inputs( "thursday" ) %>" type="checkbox">
+								<label class="label day" for="toggle4">Thursday <span class="status">Avaiable</span></label>
+								<input id="toggle5" class="<%= check_inputs( "friday" ) %>" type="checkbox">
+								<label class="label day" for="toggle5">Friday <span class="status">Avaiable</span></label>
+								<input id="toggle6" class="<%= check_inputs( "saturday" ) %>" type="checkbox">
+								<label class="label day" for="toggle6">Saturday <span class="status">Avaiable</span></label>
+								<input id="toggle7" class="<%= check_inputs( "sunday" ) %>" type="checkbox">
+								<label class="label day" for="toggle7">Sunday <span class="status">Avaiable</span></label>
+							</div>
+
+							<div class="col-xs-12 padding-top-30" id="per-diem-view">
+								<%= render "diem_calendar" %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+
+				<%= render "users/dash_footer" %>
+			</div>
+		</div>
+  </div>
+</div>
+
+<script>
+	$( document ).ready( function() {
+		var checks = $( ".status-override" )
+
+		$.each( checks, function( index, value ) {
+		  $( value ).prop( "checked", "true" );
+		});
+
+		var x = $('form.employment-type select').val()
+
+		if ( x == "Per Diem" ) {
+			$( "#day-view" ).hide();
+			$( "#per-diem-view" ).show();
+		}
+
+		$( ".employment-type select" ).on( "change", function( e ) {
+			var x = $('form.employment-type select').val()
+
+			if (x == "Per Diem") {
+				$("#day-view").slideUp("slow");
+				$("#per-diem-view").delay(700).slideDown();
+			}
+			else if (x == 'Full Time / Part Time') {
+				$('#per-diem-view').slideUp();
+				$('#day-view').delay(700).slideDown();
+			}
+			$('form.employment-type select').on('change', function () {
+				var x = $('form.employment-type select').val()
+				if (x == "Per Diem") {
+					$("#day-view").slideUp("slow");
+					$("#per-diem-view").delay(700).slideDown();
+				}
+				else if (x == 'Full Time / Part Time') {
+					$('#per-diem-view').slideUp();
+					$('#day-view').delay(700).slideDown();
+				}
+			});
+
+			$( "form.employment-type" ).submit();
+		});
+
+		$( "form.employment-type" ).on( "submit", function( e ) {
+			e.preventDefault();
+			var target = e.target;
+			var type = target.method;
+			var url = target.action;
+			var data = $( target ).serialize();
+
+			$.ajax({
+				type: type,
+				url: url,
+				data: data
+			});
+		});
+
+		$( ".day" ).on( "click", function( e ) {
+			var day = e.target.innerHTML.split( " " )[ 0 ];
+			var data = "day=" + day
+
+			$.ajax({
+				type: 'get',
+				url: '/check-availability',
+				data: data
+			}).done( function( response ) {
+			});
+		});
+	})
+</script>

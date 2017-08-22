@@ -7,14 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= stylesheet_link_tag    'rph.min.css' %>
-    <%= stylesheet_link_tag    'main.css' %>
+    <link rel="stylesheet" href="/stylesheets/rph.min.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
     <%= javascript_include_tag 'application' %>
 
     <link rel="shortcut icon" href="/favicon.png">
   </head>
 
   <body>
+    <%# if notice %>
+      <!-- <p class="notice"><%= notice %></p> -->
+    <%# elsif alert %>
+      <!-- <p class="alert"><%= alert %></p> -->
+    <%# end %>
     <%= yield %>
+    <%= javascript_include_tag "jquery-2.2.0.min.js" %>
+    <%= javascript_include_tag "scripts.js" %>
+    <%= javascript_include_tag "jpanelmenu.min.js" %>
+    <%= javascript_include_tag "chosen.min.js" %>
+    <%= javascript_include_tag "slick.min.js" %>
+    <%= javascript_include_tag "magnific-popup.min.js" %>
+    <%= javascript_include_tag "waypoints.min.js" %>
+    <%= javascript_include_tag "jquery-ui.min.js" %>
+    <%= javascript_include_tag "tooltips.min.js" %>
+    <%= javascript_include_tag "custom.min.js" %>
+    <%= javascript_include_tag "jquery.supercal.js" %>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <%= javascript_include_tag "maps.js" %>
   </body>
 </html>
